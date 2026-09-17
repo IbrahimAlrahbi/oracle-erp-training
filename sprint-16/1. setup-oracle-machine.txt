@@ -1,0 +1,37 @@
+1. OPEN REMOTE DESKTOP CONNECTION
+=================================
+
+WINDOWS
+    -> Start
+        -> Run
+
+Type:
+
+mstsc
+
+
+
+2. ENTER THE ORACLE MACHINE ADDRESS
+===================================
+
+Remote Desktop Connection
+
+Computer: <IP Address>
+
+
+3. ENTER LOGIN CREDENTIALS
+==========================
+
+User:
+<Enter User Name>
+
+Password:
+<Enter Password>
+
+
+4. CONNECT TO THE MACHINE
+=========================
+
+Click:
+
+Connect
