@@ -1,0 +1,167 @@
+
+
+ADD HUMAN RESOURCES RESPONSIBILITY AND PERSONALIZE A FIELD
+===========================================================
+
+
+1. ASSIGN HUMAN RESOURCES RESPONSIBILITY TO USER
+================================================
+
+SYSTEM ADMINISTRATOR
+    -> Security
+        -> User
+            -> Define
+
+Query User:
+
+IBRAHIM
+
+Add Responsibility:
+
+Human Resources, Vision Enterprises
+
+SAVE
+
+
+2. SWITCH TO HUMAN RESOURCES RESPONSIBILITY
+===========================================
+
+Switch Responsibility:
+
+Human Resources, Vision Enterprises
+
+
+3. OPEN ENTER AND MAINTAIN
+==========================
+
+HUMAN RESOURCES, VISION ENTERPRISES
+    -> People
+        -> Enter and Maintain
+
+
+4. IDENTIFY THE FIELD
+=====================
+
+Click the field:
+
+STATUS
+
+
+5. EXAMINE THE FIELD
+====================
+
+Help
+    -> Diagnostics
+        -> Examine
+
+Fields:
+
+Block : PERSON
+Field : D_MARITAL_STATUS
+
+
+6. OPEN FORM PERSONALIZATION
+============================
+
+Help
+    -> Diagnostics
+        -> Custom Code
+            -> Personalize
+
+
+7. CREATE PERSONALIZATION RULE
+==============================
+
+Rule:
+
+Seq         : 1
+Description : Changing Field Name
+
+
+8. OPEN ACTIONS TAB
+===================
+
+Actions Tab
+
+Action:
+
+Seq           : 1
+Target Object : PERSON.D_MARITAL_STATUS
+
+
+9. VALIDATE AND APPLY
+=====================
+
+Click:
+
+Validate
+
+Then:
+
+Apply Now
+
+SAVE
+
+
+10. CLOSE THE FORM
+==================
+
+Close the Form.
+
+
+
+11. SET PROFILE OPTION FOR FORM PERSONALIZATION
+===============================================
+
+SYSTEM ADMINISTRATOR
+    -> Profile
+        -> System
+
+
+Search Profile:
+
+UTIL%
+
+
+Click:
+
+Find
+
+
+Set Level:
+
+SITE
+
+
+Profile Options:
+
+Utilities: Diagnostics : No
+SQL Trace              : No
+
+
+SAVE
+
+
+12. TEST FORM PERSONALIZATION ACCESS
+====================================
+
+Open:
+
+Human Resources, Vision Enterprises
+
+
+Then navigate:
+
+Help
+    -> Diagnostics
+        -> Custom Code
+            -> Personalize
+
+
+Result:
+
+Personalization Form cannot be opened.
+
+
+
+

@@ -1,0 +1,73 @@
+
+
+MAKE MARITAL STATUS FIELD MANDATORY
+================================================
+
+
+1. IDENTIFY THE FIELD
+=====================
+
+Field:
+
+PERSON.D_MARITAL_STATUS
+
+
+2. OPEN FORM PERSONALIZATION
+============================
+
+Help
+    -> Diagnostics
+        -> Custom Code
+            -> Personalize
+
+
+3. CREATE PERSONALIZATION RULE
+==============================
+
+Rule:
+
+Seq         : 1
+Description : Making a Field Mandatory
+
+
+4. OPEN ACTIONS TAB
+===================
+
+Actions Tab
+
+
+Fields:
+
+Object Name : PERSON.D_MARITAL_STATUS
+Property    : REQUIRED
+Value       : TRUE
+
+
+5. VALIDATE AND APPLY
+=====================
+
+Click:
+
+Validate
+
+Then:
+
+Apply Now
+
+
+SAVE
+
+
+6. VERIFY THE RESULT
+====================
+
+Marital Status field becomes:
+
+YELLOW
+
+
+Result:
+
+Marital Status is now a MANDATORY / REQUIRED field.
+
+
