@@ -1,0 +1,99 @@
+
+
+1. OPEN ORACLE EBS
+==================
+
+Open:
+
+Firefox
+
+Then open:
+
+Oracle EBS Login Page
+
+
+2. LOGIN USING OPERATIONS ACCOUNT
+=================================
+
+User Name:
+operations
+
+Password:
+<Enter Default Password>
+
+Click:
+Login
+
+
+3. OPEN USER DEFINITION
+=======================
+
+SYSTEM ADMINISTRATOR
+    -> Security
+        -> User
+            -> Define
+
+
+4. ENTER NEW USER DETAILS
+=========================
+
+In the Users form, enter:
+
+User Name:
+<Enter New User Name>
+
+Password:
+<Enter Temporary Password>
+
+Press:
+TAB
+
+Re-enter Password:
+<Confirm Temporary Password>
+
+
+5. ASSIGN RESPONSIBILITIES
+==========================
+
+In the Responsibilities section:
+
+Add the required Responsibilities.
+
+Example:
+
+APPLICATION DEVELOPER
+SYSTEM ADMINISTRATOR
+IBRAHIM_RESP
+IBRAHIM_FORMS_RESP
+
+Add only the Responsibilities required for the user.
+
+
+6. SAVE THE USER
+================
+
+Click:
+
+Save Icon
+
+
+7. LOG OUT
+==========
+
+Logout from:
+
+operations
+
+
+8. LOGIN WITH THE NEW USER
+==========================
+
+Enter:
+
+User Name:
+<New User Name>
+
+Password:
+<Temporary Password>
+
+Login

@@ -1,0 +1,157 @@
+
+
+PROCEDURE CREATED IN SQL*PLUS
+-----------------------------
+Procedure Name:
+IBRAHIM_PR_FACT_UPDATED
+
+
+1. CREATE EXECUTABLE
+====================
+
+APPLICATION DEVELOPER
+    -> Concurrent
+        -> Executable
+
+Fields:
+
+Executable Name : IBRAHIM_PR_FACT_UPDATED
+Short Name      : IBRAHIM_PR_FACT_UPDATED
+Application     : Application Object Library
+Execution Method: PL/SQL Stored Procedure
+Execution File  : IBRAHIM_PR_FACT_UPDATED
+
+SAVE
+
+
+2. CREATE CONCURRENT PROGRAM
+============================
+
+APPLICATION DEVELOPER
+    -> Concurrent
+        -> Program
+
+Fields:
+
+Program       : IBRAHIM_PR_FACT_UPDATED
+Short Name    : IBRAHIM_PR_FACT_UPDATED
+Application   : Application Object Library
+Executable    : IBRAHIM_PR_FACT_UPDATED
+Method        : PL/SQL Stored Procedure
+Output Format : HTML
+Use in SRS    : Checked
+
+SAVE
+
+
+3. ADD PARAMETER
+================
+
+APPLICATION DEVELOPER
+    -> Concurrent
+        -> Program
+            -> Parameters
+
+Fields:
+
+Seq                          : 10
+Parameter                    : N
+Enabled                      : Checked
+Value Set                    : NUMBER_15
+Display                      : Checked
+Display Size                 : 15
+Concatenated Description Size: 25
+Description Size             : 50
+Prompt                       : N
+
+SAVE
+
+
+4. ADD PROGRAM TO EXISTING REQUEST GROUP
+========================================
+
+SYSTEM ADMINISTRATOR
+    -> Security
+        -> Responsibility
+            -> Request
+
+Existing Request Group:
+IBRAHIM_RG_PGMS
+
+Add Program:
+IBRAHIM_PR_FACT_UPDATED
+
+SAVE
+
+
+5. SWITCH TO THE RESPONSIBILITY
+===============================
+
+Select Responsibility:
+
+IBRAHIM_RESP
+
+
+6. OPEN REQUESTS
+================
+
+IBRAHIM_RESP
+    -> View
+        -> Requests
+
+
+7. SUBMIT A NEW REQUEST
+=======================
+
+IBRAHIM_RESP
+    -> View
+        -> Requests
+            -> Submit a New Request
+
+Select:
+
+Single Request
+
+Click:
+
+OK
+
+
+8. SELECT THE PROGRAM
+=====================
+
+Name:
+
+IBRAHIM_PR_FACT_UPDATED
+
+
+9. ENTER PARAMETER
+==================
+
+Parameter:
+
+N = <Enter Number>
+
+Click:
+
+OK
+
+
+10. SUBMIT THE REQUEST
+======================
+
+Click:
+
+Submit
+
+
+11. CHECK REQUEST STATUS
+========================
+
+Click:
+
+Refresh Data
+
+Wait until the request is:
+
+Completed

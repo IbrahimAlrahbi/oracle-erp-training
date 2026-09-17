@@ -1,0 +1,271 @@
+
+
+PART 1 - CREATE PARAMETER REPORT
+================================
+
+
+1. OPEN ORACLE REPORTS BUILDER
+==============================
+
+WINDOWS
+    -> Start
+        -> Oracle Reports Builder
+
+
+2. CREATE / OPEN REPORT
+=======================
+
+ORACLE REPORTS BUILDER
+    -> File
+        -> New
+            -> Report
+
+
+3. ENTER SQL QUERY WITH BIND PARAMETER
+======================================
+
+Query:
+
+SELECT * FROM EMP WHERE DEPTNO = :DNO;
+
+
+Query Name:
+
+Q_1
+
+
+Bind Parameter Created:
+
+DNO
+
+
+4. SAVE THE REPORT
+==================
+
+ORACLE REPORTS BUILDER
+    -> File
+        -> Save As
+
+File Name:
+
+IBRAHIMPARREPORT.rdf
+
+
+5. COMPILE THE REPORT
+=====================
+
+ORACLE REPORTS BUILDER
+    -> Program
+        -> Compile
+
+
+Report File:
+
+IBRAHIMPARREPORT.rdf
+
+
+PART 2 - MOVE REPORT TO ORACLE EBS SERVER
+=========================================
+
+
+6. OPEN WINSCP
+==============
+
+WINDOWS
+    -> Start
+        -> WinSCP
+
+
+7. CONNECT TO EBS SERVER
+========================
+
+Login to the Oracle EBS Server.
+
+
+8. OPEN EBS REPORTS DIRECTORY
+=============================
+
+Full Path:
+
+/u01/install/VISION/fs1/EBSapps/appl/fnd/12.0.0/reports/US
+
+
+9. MOVE REPORT FILE
+===================
+
+Move:
+
+IBRAHIMPARREPORT.rdf
+
+To:
+
+/u01/install/VISION/fs1/EBSapps/appl/fnd/12.0.0/reports/US
+
+
+PART 3 - REGISTER REPORT IN ORACLE EBS
+======================================
+
+
+10. CREATE EXECUTABLE
+=====================
+
+APPLICATION DEVELOPER
+    -> Concurrent
+        -> Executable
+
+
+Fields:
+
+Executable Name : IBRAHIMPARREPORT
+Short Name      : IBRAHIMPARREPORT
+Application     : Application Object Library
+Execution Method: Oracle Reports
+Execution File  : IBRAHIMPARREPORT
+
+SAVE
+
+
+11. CREATE CONCURRENT PROGRAM
+=============================
+
+APPLICATION DEVELOPER
+    -> Concurrent
+        -> Program
+
+
+Fields:
+
+Program     : IBRAHIMPARREPORT
+Short Name  : IBRAHIMPARREPORT
+Application : Application Object Library
+Executable  : IBRAHIMPARREPORT
+Use in SRS  : Checked
+
+SAVE
+
+
+12. CREATE PARAMETER
+====================
+
+APPLICATION DEVELOPER
+    -> Concurrent
+        -> Program
+            -> Parameters
+
+
+Fields:
+
+Seq       : 10
+Parameter : DNO
+Enabled   : Checked
+Value Set : NUMBER_15
+Display   : Checked
+Prompt    : DNO
+Token     : DNO
+
+SAVE
+
+
+PART 4 - ADD PROGRAM TO EXISTING REQUEST GROUP
+==============================================
+
+
+13. OPEN EXISTING REQUEST GROUP
+===============================
+
+SYSTEM ADMINISTRATOR
+    -> Security
+        -> Responsibility
+            -> Request
+
+
+Existing Request Group:
+
+IBRAHIM_RG_PGMS
+
+
+14. ADD PROGRAM
+===============
+
+Add Program:
+
+IBRAHIMPARREPORT
+
+SAVE
+
+
+PART 5 - RUN REPORT WITH PARAMETER
+==================================
+
+
+15. SWITCH TO RESPONSIBILITY
+============================
+
+Switch Responsibility:
+
+IBRAHIM_RESP
+
+
+16. OPEN REQUESTS
+=================
+
+IBRAHIM_RESP
+    -> View
+        -> Requests
+
+
+17. SUBMIT A NEW REQUEST
+========================
+
+Click:
+
+Submit a New Request
+
+Select:
+
+Single Request
+
+Click:
+
+OK
+
+
+18. SELECT REPORT
+=================
+
+Name:
+
+IBRAHIMPARREPORT
+
+
+19. ENTER PARAMETER
+===================
+
+Parameter:
+
+DNO = 30
+
+Click:
+
+OK
+
+
+20. SUBMIT REQUEST
+==================
+
+Click:
+
+Submit
+
+
+21. CHECK REQUEST STATUS
+========================
+
+Click:
+
+Refresh Data
+
+Wait until:
+
+Completed
+

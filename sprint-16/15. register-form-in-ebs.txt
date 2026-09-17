@@ -1,0 +1,139 @@
+
+FORM FILE:
+IbrahimMasterDetailForm.fmx
+
+
+1. MOVE THE COMPILED FORM TO EBS SERVER
+=======================================
+
+WinSCP
+
+Move:
+
+IbrahimMasterDetailForm.fmx
+
+To:
+
+/u01/install/VISION/fs1/EBSapps/appl/fnd/12.0.0/forms/US
+
+
+2. REGISTER THE FORM
+====================
+
+APPLICATION DEVELOPER
+    -> Application
+        -> Form
+
+Fields:
+
+Form           : IBRAHIMMASTERDETAILFORM
+Application    : Application Object Library
+User Form Name : IbrahimMasterDetailForm
+
+SAVE
+
+
+3. CREATE THE FORM FUNCTION
+===========================
+
+APPLICATION DEVELOPER
+    -> Application
+        -> Function
+
+Fields:
+
+Function           : IBRAHIMMASTERDETAILFORM
+User Function Name : IBRAHIMMASTERDETAILFORM
+
+Then open:
+
+APPLICATION DEVELOPER
+    -> Application
+        -> Function
+            -> Form
+
+Form:
+
+IbrahimMasterDetailForm
+
+SAVE
+
+
+4. ADD THE FUNCTION TO THE MENU
+===============================
+
+APPLICATION DEVELOPER
+    -> Application
+        -> Menu
+
+Fields:
+
+Menu Name      : IBRAHIMMENU
+User Menu Name : IBRAHIMMENU
+
+
+Add the Master-Detail Form:
+
+Seq      : 1
+Prompt   : DEPT_EMP_FORM
+Function : IBRAHIMMASTERDETAILFORM
+Grant    : Checked
+
+SAVE
+
+
+5. CREATE A NEW RESPONSIBILITY
+==============================
+
+SYSTEM ADMINISTRATOR
+    -> Security
+        -> Responsibility
+            -> Define
+
+Fields:
+
+Responsibility Name : IBRAHIM_FORMS_RESP
+Menu                : IBRAHIMMENU
+
+SAVE
+
+
+6. ASSIGN THE RESPONSIBILITY TO THE USER
+========================================
+
+SYSTEM ADMINISTRATOR
+    -> Security
+        -> User
+            -> Define
+
+Query the required user.
+
+Example:
+
+User:
+IBRAHIM
+
+Add Responsibility:
+
+IBRAHIM_FORMS_RESP
+
+SAVE
+
+
+7. SWITCH TO THE NEW RESPONSIBILITY
+===================================
+
+Switch Responsibility:
+
+IBRAHIM_FORMS_RESP
+
+
+8. OPEN THE FORM
+================
+
+IBRAHIM_FORMS_RESP
+    -> DEPT_EMP_FORM
+
+Form:
+
+IbrahimMasterDetailForm
