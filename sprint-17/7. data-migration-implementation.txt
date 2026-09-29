@@ -1,0 +1,97 @@
+A. CREATE CONTROL FILE
+======================
+
+1. OPEN NOTEPAD
+2. CREATE NEW FILE
+3. ENTER:
+
+LOAD DATA
+INFILE '/u01/install/VISION/fs1/EBSapps/appl/fnd/12.0.0/reports/US/IBRAHIMDATA.dat'
+INTO TABLE IBRAHIM_TEST
+FIELDS TERMINATED BY ","
+OPTIONALLY ENCLOSED BY '"'
+(ID,NAME,COURSE)
+
+4. SAVE AS:
+   IBRAHIMCONTROL.ctl
+
+5. SAVE AS TYPE:
+   All Files
+
+
+B. CREATE DATA FILE
+===================
+
+1. OPEN NOTEPAD
+2. CREATE NEW FILE
+3. ENTER:
+
+1,'IBRAHIM','ORACLE'
+2,'SALIM','C++'
+3,'ALI','JAVA'
+4,'SAID','PYTHON'
+5,'ABDULLAH','FUSION'
+
+4. SAVE AS:
+   IBRAHIMDATA.dat
+
+5. SAVE AS TYPE:
+   All Files
+
+
+C. CREATE TABLE IN SQLPLUS
+==========================
+
+1. OPEN SQLPLUS
+2. CREATE TABLE:
+
+CREATE TABLE IBRAHIM_TEST
+(
+    ID     NUMBER,
+    NAME   CHAR(50),
+    COURSE VARCHAR2(100)
+);
+
+3. VERIFY TABLE:
+   DESC IBRAHIM_TEST;
+
+
+D. PLACE FILES ON EBS SERVER
+============================
+
+1. OPEN WINSCP
+2. MOVE:
+   IBRAHIMCONTROL.ctl
+   IBRAHIMDATA.dat
+
+3. TO:
+   /u01/install/VISION/fs1/EBSapps/appl/fnd/12.0.0/reports/US
+
+
+E. INVOKE SQL*LOADER
+====================
+
+1. WINDOWS
+   -> Start
+      -> CMD
+
+2. RUN:
+
+sqlldr userid=apps/apps@EBSDB control='/u01/install/VISION/fs1/EBSapps/appl/fnd/12.0.0/reports/US/IBRAHIMCONTROL.ctl'
+
+
+F. VERIFY DATA
+==============
+
+1. OPEN SQLPLUS
+2. RUN:
+
+SELECT * FROM IBRAHIM_TEST;
+
+3. VERIFY RECORDS:
+
+1  IBRAHIM   ORACLE
+2  SALIM     C++
+3  ALI       JAVA
+4  SAID      PYTHON
+5  ABDULLAH  FUSION
