@@ -54,10 +54,10 @@ C. CREATE EMPLOYEE DATA BLOCK
 
 
 
-L. SAVE AND COMPILE
+D. SAVE AND COMPILE
 ===================
 
-M. MOVE FMX TO EBS SERVER
+E. MOVE FMX TO EBS SERVER
 =========================
 
 1. OPEN:
@@ -70,7 +70,7 @@ M. MOVE FMX TO EBS SERVER
    /u01/install/VISION/fs1/EBSapps/appl/fnd/12.0.0/forms/US
 
 
-N. REGISTER NEW FORM
+F. REGISTER NEW FORM
 ====================
 
 1. OPEN:
@@ -84,7 +84,7 @@ N. REGISTER NEW FORM
 3. SAVE
 
 
-O. CREATE NEW FORM FUNCTION
+G. CREATE NEW FORM FUNCTION
 ===========================
 
 1. OPEN:
@@ -100,7 +100,7 @@ O. CREATE NEW FORM FUNCTION
 4. SAVE
 
 
-Q. CREATE NEW MENU
+H. CREATE NEW MENU
 ==================
 
 1. OPEN:
@@ -118,7 +118,7 @@ Q. CREATE NEW MENU
 4. SAVE
 
 
-R. CREATE NEW RESPONSIBILITY
+I. CREATE NEW RESPONSIBILITY
 ============================
 
 1. OPEN:
@@ -134,7 +134,7 @@ R. CREATE NEW RESPONSIBILITY
 3. SAVE
 
 
-S. ASSIGN RESPONSIBILITY TO USER
+J. ASSIGN RESPONSIBILITY TO USER
 ===============================
 
 1. OPEN:
@@ -149,7 +149,7 @@ S. ASSIGN RESPONSIBILITY TO USER
 4. SAVE
 
 
-T. RUN FORM FROM EBS
+K. RUN FORM FROM EBS
 ====================
 
 1. SWITCH TO:
@@ -161,7 +161,9 @@ T. RUN FORM FROM EBS
 3. VERIFY:
    Responsibility > Menu > Function > Form > Employee Data
 
-Q. ADDING MENU FOR FORM
+
+L. ADDING MENU FOR FORM
+=======================
 1. FROM WINSCP IN THE PATH: /u01/install/VISION/fs1/EBSapps/appl/au/12.0.0/resource/US
 COPY TO MY DESKTOP THE TWO FILES: FNDMENU.mmb 
 			          FNDMENU.mmx
