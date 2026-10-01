@@ -1,0 +1,181 @@
+QUESTION 2 - ORACLE FORMS DEVELOPMENT + FORM REGISTRATION
+
+
+A. CREATE FORM FROM APSTAND
+
+1. OPEN:
+   Oracle Forms Builder
+
+2. OPEN:
+   APSTAND.fmb
+
+3. SAVE AS:
+   IBRAHIM_Q2_EMP_FORM.fmb
+
+4. CHANGE MODULE NAME:
+   IBRAHIM_Q2_EMP_FORM
+
+
+
+B. CREATE CANVAS / WINDOW
+=========================
+
+1. CREATE / RENAME WINDOW:
+   IBRAHIM_WIN
+
+2. CREATE / RENAME CANVAS:
+   IBRAHIM_CAN
+
+
+C. CREATE EMPLOYEE DATA BLOCK
+=============================
+
+1. OPEN:
+   Object Navigator > Data Blocks > Create
+
+2. SELECT:
+   Data Block Wizard
+
+3. SELECT TABLE:
+   EMP
+
+4. SELECT:
+   EMPNO
+   ENAME
+   DEPTNO
+   JOB
+   SAL
+   HIREDATE
+
+5. BLOCK NAME:
+   EMP
+
+6. FINISH
+
+
+
+L. SAVE AND COMPILE
+===================
+
+M. MOVE FMX TO EBS SERVER
+=========================
+
+1. OPEN:
+   WinSCP
+
+2. MOVE:
+   IBRAHIM_Q2_EMP_FORM.fmx
+
+3. TO:
+   /u01/install/VISION/fs1/EBSapps/appl/fnd/12.0.0/forms/US
+
+
+N. REGISTER NEW FORM
+====================
+
+1. OPEN:
+   APPLICATION DEVELOPER > Application > Form
+
+2. CREATE:
+   Form           : IBRAHIM_Q2_EMP_FORM
+   Application    : Application Object Library
+   User Form Name : Ibrahim Q2 Employee Form
+
+3. SAVE
+
+
+O. CREATE NEW FORM FUNCTION
+===========================
+
+1. OPEN:
+   % DEVELOPER > Application > Function
+
+2. CREATE:
+   Function           : IBRAHIM_Q2_EMP_FORM
+   User Function Name : Ibrahim Q2 Employee Form
+
+3. FORM TAB:
+   Form : IBRAHIM_Q2_EMP_FORM
+
+4. SAVE
+
+
+Q. CREATE NEW MENU
+==================
+
+1. OPEN:
+   APPLICATION DEVELOPER > Application > Menu
+
+2. CREATE:
+   Menu Name      : IBRAHIM_Q2_MENU
+   User Menu Name : IBRAHIM_Q2_MENU
+
+3. ADD:
+   Seq      : 1
+   Prompt   : IBRAHIM_Q2_EMP_FORM
+   Function : IBRAHIM_Q2_EMP_FORM
+
+4. SAVE
+
+
+R. CREATE NEW RESPONSIBILITY
+============================
+
+1. OPEN:
+   SYSTEM ADMINISTRATOR > Security > Responsibility > Define
+
+2. CREATE:
+   Responsibility Name : IBRAHIM_Q2_RESP
+   Application         : Application Object Library
+   Responsibility Key  : IBRAHIM_Q2_RESP
+   Menu                : IBRAHIM_Q2_MENU
+   Request Group       : IBRAHIM_Q1_RG
+
+3. SAVE
+
+
+S. ASSIGN RESPONSIBILITY TO USER
+===============================
+
+1. OPEN:
+   SYSTEM ADMINISTRATOR > Security > User > Define
+
+2. QUERY:
+   IBRAHIM
+
+3. ADD:
+   IBRAHIM_Q2_RESP
+
+4. SAVE
+
+
+T. RUN FORM FROM EBS
+====================
+
+1. SWITCH TO:
+   IBRAHIM_Q2_RESP
+
+2. OPEN:
+   EMPLOYEE_DATA
+
+3. VERIFY:
+   Responsibility > Menu > Function > Form > Employee Data
+
+Q. ADDING MENU FOR FORM
+1. FROM WINSCP IN THE PATH: /u01/install/VISION/fs1/EBSapps/appl/au/12.0.0/resource/US
+COPY TO MY DESKTOP THE TWO FILES: FNDMENU.mmb 
+			          FNDMENU.mmx
+
+
+ 
+THEN MOVE THEM TO PATH: /u01/install/VISION/fs1/EBSapps/appl/fnd/12.0.0/forms/US
+
+2. OPEN FORM BUILDER
+	CLICK MODULE
+3. IN PROPERTY PALLETTE > FUNCTIONAL > PUT MENUE MODEL: /u01/install/VISION/fs1/EBSapps/appl/fnd/12.0.0/forms/US
+
+4. SAVE AND COMPILE 
+5. MOVE THE UPDATED ONE IN: /u01/install/VISION/fs1/EBSapps/appl/fnd/12.0.0/forms/US
+
+
+

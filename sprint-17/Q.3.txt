@@ -1,0 +1,131 @@
+
+A. CREATE REPORT
+================
+
+1. OPEN:
+   Oracle Reports Builder
+2. CREATE:
+   Report Wizard
+3. CONNECT:
+   APPS/apps@EBSDB
+4. ENTER QUERY:
+
+SELECT
+    E.EMPNO  EMPLOYEE_ID,
+    E.ENAME  EMPLOYEE_NAME,
+    E.DEPTNO DEPARTMENT_ID,
+    D.DNAME  DEPARTMENT,
+    E.JOB    JOB,
+    E.SAL    SALARY
+FROM EMP E,
+     DEPT D
+WHERE E.DEPTNO = D.DEPTNO
+AND E.DEPTNO = :P_DEPARTMENT_ID
+ORDER BY E.EMPNO;
+
+G. SAVE AND COMPILE
+===================
+
+1. SAVE:
+   IBRAHIM_Q3_EMP_SAL_RPT.rdf
+2. COMPILE
+
+H. MOVE RDF TO EBS SERVER
+=========================
+
+1. OPEN:
+   WinSCP
+2. MOVE:
+   IBRAHIM_Q3_EMP_SAL_RPT.rdf
+3. TO:
+   /u01/install/VISION/fs1/EBSapps/appl/fnd/12.0.0/reports/US
+
+CREATE VALUE SET
+===================
+
+1. OPEN:
+   APPLICATION DEVELOPER > Application > Validation > Set
+2. CREATE:
+   Value Set Name  : IBRAHIM_Q3_VS_DEPT
+   Description     : Q3 Department ID Value Set
+   Format Type     : Number
+   Maximum Size    : 4
+   Validation Type : Table
+3. CLICK:
+   Edit Information
+4. ENTER:
+   Table Name   : EMP
+   Value Column : DEPTNO
+5. SAVE
+
+CREATE EXECUTABLE
+====================
+
+1. OPEN:
+   APPLICATION DEVELOPER > Concurrent > Executable
+2. CREATE:
+   Executable Name  : IBRAHIM_Q3_EMP_SAL_RPT
+   Short Name       : IBRAHIM_Q3_EMP_SAL_RPT
+   Application      : Application Object Library
+   Execution Method : Oracle Reports
+   Execution File   : IBRAHIM_Q3_EMP_SAL_RPT
+3. SAVE
+
+CREATE CONCURRENT PROGRAM
+============================
+
+1. OPEN:
+   APPLICATION DEVELOPER > Concurrent > Program
+2. CREATE:
+   Program       : Ibrahim Q3 Employee Department Salary Report
+   Short Name    : IBRAHIM_Q3_EMP_SAL_RPT
+   Application   : Application Object Library
+   Executable    : IBRAHIM_Q3_EMP_SAL_RPT
+   Output Format : PDF
+   Use in SRS    : Checked
+3. SAVE
+
+K. CREATE PARAMETER
+===================
+
+1. CLICK Parameters
+2. ENTER:
+   Seq       : 10
+   Parameter : P_DEPARTMENT_ID
+   Enabled   : Checked
+   Value Set : IBRAHIM_Q3_VS_DEPT
+   Required  : Checked
+   Display   : Checked
+   Prompt    : P_DEPARTMENT_ID
+   Token     : P_DEPARTMENT_ID
+3. SAVE
+
+L. ADD PROGRAM TO EXISTING REQUEST GROUP
+========================================
+
+1. OPEN:
+   SYSTEM ADMINISTRATOR > Security > Responsibility > Request
+2. QUERY:
+   IBRAHIM_Q1_RG
+3. ADD:
+   IBRAHIM_Q3_VS_DEPT
+4. SAVE
+
+
+P. SUBMIT REPORT
+================
+
+1. SWITCH TO:
+   IBRAHIM_Q1_RESP
+2. OPEN:
+   View > Requests
+3. SUBMIT:
+   Ibrahim Q3 Employee Department Salary Report
+4. ENTER:
+   Department ID : 10
+5. SUBMIT
+6. REFRESH UNTIL:
+   Completed / Normal
+7. CLICK:
+   View Output
+

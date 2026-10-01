@@ -1,0 +1,188 @@
+QUESTION 1 - PL/SQL PROCEDURE + CONCURRENT PROGRAM REGISTRATION
+
+
+A. CREATE VALUE SET
+
+APPLICATION DEVELOPER
+    -> Application
+        -> Validation
+            -> Set
+
+
+Fields:
+
+Name            : IBRAHIM_Q1_VS_DEPT
+Format Type     : Number
+Maximum Size    : 4
+Validation Type : Table
+
+
+Click:
+
+Edit Information
+
+
+B. DEFINE TABLE VALIDATION
+
+Fields:
+
+Table Name   : EMP
+Value Column : DEPTNO
+
+
+SAVE
+
+
+C. CREATE CONCURRENT PROGRAM
+
+APPLICATION DEVELOPER
+    -> Concurrent
+        -> Program
+
+
+Fields:
+
+Program       : IBRAHIM_EMP_SALARY_SUMMARY
+Short Name    : IBRAHIM_EMP_SALARY_SUMMARY
+Application   : Application Object Library
+Executable    : IBRAHIM_EMP_SALARY_SUMMARY
+Output Format : Text
+Use in SRS    : Checked
+
+
+SAVE
+
+
+D. CREATE PARAMETER
+
+From the Concurrent Program window:
+
+Click:
+
+Parameters
+
+
+Fields:
+
+Seq       : 10
+Parameter : P_DEPARTMENT_ID
+Enabled   : Checked
+Value Set : IBRAHIM_Q1_VS_DEPT
+Required  : Checked
+Display   : Checked
+
+
+SAVE
+
+
+E. CREATE NEW REQUEST GROUP
+
+SYSTEM ADMINISTRATOR
+    -> Security
+        -> Responsibility
+            -> Request
+
+
+Create Request Group:
+
+Name        : IBRAHIM_Q1_RG
+Application : Application Object Library
+Code        : IBRAHIM_Q1_RG
+
+
+Add Program:
+
+IBRAHIM_EMP_SALARY_SUMMARY
+
+
+SAVE
+
+
+F. CREATE NEW RESPONSIBILITY
+
+SYSTEM ADMINISTRATOR
+    -> Security
+        -> Responsibility
+            -> Define
+
+
+Fields:
+
+Responsibility Name : IBRAHIM_Q1_RESP
+Application         : Application Object Library
+Responsibility Key  : IBRAHIM_Q1_RESP
+Menu                : POSITION CONTROL, VISION UNIVERSITY
+Request Group       : IBRAHIM_Q1_RG
+
+
+SAVE
+
+
+G. ASSIGN RESPONSIBILITY TO USER
+
+SYSTEM ADMINISTRATOR
+    -> Security
+        -> User
+            -> Define
+
+
+Query User:
+
+IBRAHIM
+
+
+Add Responsibility:
+
+IBRAHIM_Q1_RESP
+
+
+SAVE
+
+
+H. SUBMIT REQUEST
+
+1. Switch Responsibility:
+
+   IBRAHIM_Q1_RESP
+
+
+2. Open:
+
+   View
+       -> Requests
+
+
+3. Click:
+
+   Submit a New Request
+
+
+4. Select Program:
+
+   IBRAHIM_EMP_SALARY_SUMMARY
+
+
+5. Enter Parameter:
+
+   Department ID : 10
+
+
+6. Click:
+
+   Submit
+
+
+7. Refresh until:
+
+   Phase  : Completed
+   Status : Normal
+
+
+8. Click:
+
+   View Output
+
+
+9. Click:
+
+   View Log

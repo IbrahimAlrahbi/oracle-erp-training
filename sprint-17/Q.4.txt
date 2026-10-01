@@ -1,0 +1,263 @@
+
+
+
+B. CREATE NEW ORACLE REPORT
+===========================
+
+1. OPEN ORACLE REPORTS BUILDER
+
+2. CREATE:
+   New Report > Use Report Wizard
+
+3. CONNECT:
+   APPS/apps@EBSDB
+
+4. SELECT:
+   SQL Query
+
+5. ENTER QUERY:
+
+SELECT
+    E.EMPNO,
+    E.ENAME,
+    E.DEPTNO,
+    D.DNAME,
+    E.JOB,
+    E.SAL,
+    E.HIREDATE
+FROM EMP E,
+     DEPT D
+WHERE E.DEPTNO = D.DEPTNO
+AND E.DEPTNO = :P_DEPARTMENT_ID
+ORDER BY E.EMPNO;
+
+6. COMPLETE REPORT WIZARD
+
+7. DISPLAY:
+   EMPNO
+   ENAME
+   DEPTNO
+   DNAME
+   JOB
+   SAL
+   HIREDATE
+
+
+
+F. SAVE AND COMPILE REPORT
+==========================
+
+1. SAVE AS:
+   IBRAHIM_Q4_EMP_SAL_RPT.rdf
+
+2. COMPILE REPORT
+
+3. VERIFY:
+   No Compilation Errors
+
+
+G. MOVE REPORT TO EBS SERVER
+============================
+
+1. OPEN WINSCP
+
+2. MOVE:
+   IBRAHIM_Q4_EMP_SAL_RPT.rdf
+
+3. TO:
+   /u01/install/VISION/fs1/EBSapps/appl/fnd/12.0.0/reports/US
+
+
+H. CREATE EXECUTABLE
+====================
+
+1. OPEN:
+   APPLICATION DEVELOPER
+      -> Concurrent
+         -> Executable
+
+2. ENTER:
+   Executable Name  : IBRAHIM_Q4_EMP_SAL_RPT
+   Short Name       : IBRAHIM_Q4_EMP_SAL_RPT
+   Application      : Application Object Library
+   Execution Method : Oracle Reports
+   Execution File   : IBRAHIM_Q4_EMP_SAL_RPT
+
+3. SAVE
+
+
+
+
+I. CREATE CONCURRENT PROGRAM
+============================
+
+1. OPEN:
+   APPLICATION DEVELOPER
+      -> Concurrent
+         -> Program
+
+2. ENTER:
+   Program       : IBRAHIM_Q4_EMP_SAL_RPT
+   Short Name    : IBRAHIM_Q4_EMP_SAL_RPT
+   Application   : Application Object Library
+   Executable    : IBRAHIM_Q4_EMP_SAL_RPT
+   Output Format : XML
+   Use in SRS    : Checked
+
+3. SAVE
+
+
+
+J. CREATE PARAMETER
+===================
+
+1. CLICK:
+   Parameters
+
+2. ENTER:
+   Sequence  : 10
+   Parameter : P_DEPARTMENT_ID
+   Value Set : IBRAHIM_Q4_VS_DEPT
+   Prompt    : Department ID
+   Token     : P_DEPARTMENT_ID
+   Enabled   : Checked
+   Required  : Checked
+   Display   : Checked
+
+3. SAVE
+
+
+K. ADD PROGRAM TO EXISTING REQUEST GROUP
+========================================
+
+1. OPEN:
+   SYSTEM ADMINISTRATOR
+      -> Security
+         -> Responsibility
+            -> Request
+
+2. QUERY:
+   IBRAHIM_Q1_RG
+
+3. ADD:
+   Program : IBRAHIM_Q4_EMP_SAL_RPT
+
+4. SAVE
+
+
+
+O. GENERATE XML OUTPUT
+======================
+
+1. SWITCH TO:
+   IBRAHIM_Q1_RESP
+
+2. OPEN:
+   View
+      -> Requests
+         -> Submit a New Request
+
+3. SELECT:
+   IBRAHIM_Q4_EMP_SAL_RPT
+
+4. ENTER:
+   P_DEPARTMENT_ID = 20
+
+5. SUBMIT
+
+6. OPEN:
+   View
+      -> Requests
+
+7. CLICK:
+   Refresh Data
+
+8. WAIT UNTIL:
+   Completed / Normal
+
+9. SELECT REQUEST
+
+10. CLICK:
+    View Output
+
+11. SAVE XML AS:
+    IBRAHIM_Q4_EMP_SAL_SAMPLE.xml
+
+
+P. CREATE BI PUBLISHER RTF TEMPLATE
+===================================
+
+1. OPEN MICROSOFT WORD
+
+2. CLICK:
+   BIP / BI Publisher
+
+3. CLICK:
+   Sample XML
+
+4. SELECT:
+   IBRAHIM_Q4_EMP_SAL_SAMPLE.xml
+
+5. CLICK:
+   Table Wizard
+
+6. SELECT:
+   EMPNO
+   ENAME
+   DEPTNO
+   DNAME
+   JOB
+   SAL
+   HIREDATE
+
+7. COMPLETE TABLE WIZARD
+
+
+
+R. CREATE HORIZONTAL BAR GRAPH
+==============================
+
+1. OPEN:
+   BIP
+      -> Insert
+         -> Chart
+
+2. SELECT:
+   Chart Type  : Bar
+   Orientation : Horizontal
+
+3. TITLE:
+   Employees and Average Salary
+
+4. CATEGORY:
+   DNAME
+
+5. VALUES:
+   CS_EMP_COUNT
+   CS_AVG_SALARY
+
+6. COMPLETE CHART WIZARD
+
+
+S. SAVE RTF TEMPLATE
+====================
+
+1. SAVE AS:
+   IBRAHIM_Q4_EMP_SAL_RPT.rtf
+
+2. TEST:
+   BIP
+      -> Preview
+         -> HTML
+
+3. TEST:
+   BIP
+      -> Preview
+         -> PDF
+
+
+
+
+
+
+
