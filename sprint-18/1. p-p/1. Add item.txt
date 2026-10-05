@@ -1,0 +1,67 @@
+1. Open:
+   Inventory Vision Operations (USA)
+      -> Items
+         -> Master items
+
+2. Set the following:
+   Organization: V1 Vision Operations
+   Item: XX_IBRAHIM_LAPTOP
+   Desc: Laptop for Z – Training
+
+3. Open:
+   Tools
+      -> Copy from
+
+4. Click:
+   <Tab>
+   <Apply>
+   <Done>
+   All required checkboxes selected
+
+5. Open the Purchasing tab and set:
+   List price: 100
+
+6. Click:
+   <Save>
+
+7. In SQL Developer, query:
+   Desc mtl_system_items_b -- Header information
+   select * from mtl_system_items_b where segment1 = ‘XX_IBRAHIM_LAPTOP';
+
+8. Add 1000 laptops in stock:
+   Transactions
+      -> Miscellaneous transactions
+
+9. Set the following:
+   Type: m
+   <Tab>
+   Select Miscellaneous Receipt (Add)
+   <Transaction lines>
+
+10. Set the transaction details:
+    Item: XX_IBRAHIM_LAPTOP
+    Sub inventory: Stores
+    UOM (Unit of measurement): Ea
+    Quantity: 1000
+    Account: Payables
+    AccNo is displayed
+
+11. Click:
+    <Save>
+
+12. Open:
+    On hand availability
+       -> On-hand quantity
+
+13. Enter:
+    Item: XX_IBRAHIM_LAPTOP
+    Click <Tab>
+
+14. Confirm:
+    Desc: Laptop for Z – Training (Automatically)
+
+15. Click:
+    <Find>
+
+16. Click Availability and confirm:
+    1000 laptops

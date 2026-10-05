@@ -1,0 +1,29 @@
+1. Workflow Administrator Web Application
+	-> Administrator Workflow
+		-> Developer Studio
+
+2. ENTER: IBR%
+3. Click <Go>
+
+Login as Super Admin
+=========================
+
+4. Login as SYSADMIN in EBS
+5. Workflow Administrator Web Application
+	-> Administrator Workflow
+		-> Developer Studio
+6. ENTER: IBR%
+7. Click <Go>
+8. Click <Run>
+9. Set:
+	- Item Key: 1
+	- User Key: 1
+
+10. Click in the right top <Submit>
+11. From the top menu click <Status Monitor>
+12. Enter Workflow Type 'IBRA_WF'
+13. Login back with my user 
+14. Workflow Administrator Web Application
+	-> Administrator Workflow
+		-> Developer Studio
+15. From the menu > Click 'Notification'

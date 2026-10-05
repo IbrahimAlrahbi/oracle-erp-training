@@ -1,0 +1,46 @@
+1. Open:
+   Payments
+      -> Entry
+         -> Payments
+
+2. Set:
+   Type: Manual
+
+3. Set:
+   Operating unit: Vision Operations
+
+4. Set:
+   Trading partner: Abbott Laboratories
+   Click <Tab>
+   All info are displayed.
+
+5. Set:
+   Payment date: Today
+
+6. Set:
+   Bank account: BofA 204
+   All info are displayed.
+
+7. Set:
+   Payment process profile: CHECK – USD
+
+8. Click:
+   Action
+      -> Creating account
+         -> Final post
+            -> <OK>
+9. In sql developer:
+	Select * from ap_invoice_payments_all WHERE INVOICE_ID = '' ORDER BY 1 DESC;
+
+10. In sql developer:
+	ESC GL_JE_HEADERS
+	SELECT NAME FROM GL_JE_HEADERS WHERE NAME LIKE '%26 Purchase Invoices USD%';
+
+11. Open:
+	General Ledger, Vision Operations (USA)
+		-> Journals 
+			-> Enter
+
+12. Set:
+	Journal: %
+	Click: <Find>

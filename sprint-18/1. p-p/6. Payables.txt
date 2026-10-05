@@ -1,0 +1,62 @@
+1. Open:
+   Payables
+      -> Invoices
+         -> Entry
+            -> Invoices
+
+2. Enter:
+   PO number: 6738
+
+3. Click <Tab> until the following yellow fields are displayed.
+
+4. Set:
+   Invoince num: IBRAHIMINV001
+   Invoice amount: 200
+   Payment method: CHECK
+
+5. Open:
+   Lines tab
+
+6. Set:
+   Amount: 2500
+   Ship to: Auckland
+   PO line: … (LOV) Display 1
+   PO shipment: … (LOV) Display 1
+
+7. Click:
+   Distributions
+
+8. Click:
+   <Save>
+
+9. Click:
+   Actions1
+      -> Validate
+         -> <OK>
+
+10. Open:
+    <Holds> tab
+
+11. Click:
+    <Release 1>
+
+12. Select:
+    Default release name: (LOV)
+
+13. Click:
+    <OK>
+
+14. Open:
+    Actions 1
+       -> Create accounting
+          -> Final post
+             -> Force approval
+
+15. Click:
+    <OK>
+
+16. In SQL Developer, query:
+    Select * from ap_invoices_all WHERE INVOICE_NUM = ‘IBRAHIMINV001';
+
+17. Query:
+    Select * from ap_invoice_distributions_all where invoice_id = '';

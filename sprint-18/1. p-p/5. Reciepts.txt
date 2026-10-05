@@ -1,0 +1,27 @@
+1. Open:
+   Receiving
+      -> Receipts
+
+2. Enter:
+   Organization: V1 Vision Operations
+
+3. Enter:
+   Purchase order no: ‘PO’
+   Click <Tab>
+
+4. Add comments.
+
+5. Click:
+   <Save>
+
+6. Click:
+   Header
+
+7. Note:
+   The receipt number will be displayed.
+
+8. In SQL Developer, query:
+   Select * from rcv_shipment_headers order by 1 desc;
+
+9. Query the receipt:
+   Select * from rcv_shipment_headers where receipt_num = '9119';

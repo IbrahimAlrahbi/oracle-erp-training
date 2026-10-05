@@ -1,0 +1,70 @@
+1. Open:
+   Purchasing
+      -> Requisitions
+         -> Requisition
+
+2. In the heading, set:
+   Operating unit: Vision Operations
+   Type: PO
+   Preparer: Stock, Ms. Pat (Manager)
+
+3. In lines, click:
+   Num
+
+4. Enter the item:
+   XX_IBRAHIM%
+   Click <Tab>
+
+5. Set:
+   Quantity: 2
+   Click <Tab>
+
+6. Set:
+   Need by: Specific date (next day)
+   Location: Auckland
+   Subinventory: Stores
+   Supplier: Abbott Laboratories, Inc.
+   Site: CORP HQ
+
+7. Click:
+   <Save>
+
+8. Note:
+   A number will be generated and will be used in the next step.
+
+9. Open SQL Developer and query:
+   select * from po_requisition_headers_all where segment1='NUMBER';
+
+10. Get:
+    requisition_header_id
+
+11. Query:
+    select * from po_requisition_lines_all where requisition_header_id = 'requisition_header_id';
+
+12. Get:
+    requisition_line_id
+
+13. Query:
+    select * from po_req_distributions_all where requisition_line_id = 'requisition_line_id';
+
+14. Open:
+    Purchasing
+       -> Requisitions
+          -> Requisition
+
+15. Click:
+    Distribution
+
+16. Click:
+    Approve
+
+17. Open:
+    Purchasing
+       -> Requisitions
+          -> Requisition summary
+
+18. Enter:
+    Requisition Number: 16094
+
+19. Click:
+    <Find>

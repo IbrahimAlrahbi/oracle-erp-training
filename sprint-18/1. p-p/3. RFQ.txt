@@ -1,0 +1,55 @@
+1. Open:
+   RFQ’s
+
+2. Set the following:
+   Operating unit: Vision Operation
+   Type: Standard RFQ
+   Close date: Tomorrow
+   Ship to: Auckland
+
+3. Query the item:
+   XX_IBRHIM%
+   Click <Tab>
+
+4. Click:
+   Price break
+
+5. Set:
+   Quantity: 2
+   Org: V1
+   Ship-to: Auckland
+
+6. Click:
+   Suppliers
+
+7. Set supplier:
+   Abbott Laboratories
+
+8. Click:
+   <Save>
+
+9. Note:
+   A number is generated.
+
+10. From the top menu, open:
+    Tools
+       -> Copy document
+
+11. Set:
+    Action: Entire RFQ
+    Type: Standard Quotation
+    Supplier: Abbott Laboratories
+    Site: CORP HQ
+
+12. Click:
+    <OK>
+
+13. Note the numbers:
+    <RFQ>
+    <QUOTATION>
+
+14. In SQL Developer, query the RFQ:
+    select * from po_headers_all where segment1 = '377' and type_lookup_code = 'RFQ';
+
+15. Query the quotation:
+    select * from po_headers_all where segment1 = '565' and type_lookup_code = 'QUOTATION';

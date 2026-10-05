@@ -1,0 +1,64 @@
+1. Open:
+   Purchase order
+      -> Purchase order
+
+2. Set the following:
+   Operating unit: Vision Operation
+   Type: Standard Purchase Order
+   Close date: Tomorrow
+   Ship to: Auckland
+   Supplier: ABBOTT
+
+3. Query the item:
+   XX_IBRHIM%
+   Click <Tab>
+
+4. Click:
+   Num
+
+5. Set:
+   Quantity: 2
+   Pronised-by:
+   Need-by:
+
+6. Click:
+   Shipments
+
+7. Set shipment details:
+   Org: V1
+   Ship to: Auckland
+   Quantity: 2
+
+8. Click:
+   Distributions
+
+9. Click:
+   <Save>
+
+10. Note the following:
+    PO number: 6738
+    Supplier: Abbott Laboratories
+    Site: CORP HQ
+    Ship to: Auckland
+
+11. Click:
+    <Approve>
+
+12. Open:
+    Purchase order
+       -> Purchase order summary
+
+13. Enter:
+    Number: ‘PO’
+
+14. Click:
+    <Find>
+
+15. In SQL Developer, query:
+    Select * from po_headers_all where segment1= '6738';
+
+16. Query:
+    SELECT * FROM PO_LINES_ALL WHERE PO_HEADER_ID = '360112';
+
+17. Query:
+    Select * from PO.po_line_locations_all WHERE PO_LINE_ID = '428483';
