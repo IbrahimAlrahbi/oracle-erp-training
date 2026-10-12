@@ -1,5 +1,7 @@
 1. Open:
-   RFQ’s
+   Purchasing
+	-> RFQ’s & Quotations
+		-> RFQ’s
 
 2. Set the following:
    Operating unit: Vision Operation
@@ -18,6 +20,8 @@
    Quantity: 2
    Org: V1
    Ship-to: Auckland
+<Save>
+
 
 6. Click:
    Suppliers
@@ -45,11 +49,11 @@
     <OK>
 
 13. Note the numbers:
-    <RFQ>
-    <QUOTATION>
+    412
+    596
 
 14. In SQL Developer, query the RFQ:
-    select * from po_headers_all where segment1 = '377' and type_lookup_code = 'RFQ';
+    select * from po_headers_all where segment1 = '412' and type_lookup_code = 'RFQ';
 
 15. Query the quotation:
-    select * from po_headers_all where segment1 = '565' and type_lookup_code = 'QUOTATION';
+    select * from po_headers_all where segment1 = '596' and type_lookup_code = 'QUOTATION';

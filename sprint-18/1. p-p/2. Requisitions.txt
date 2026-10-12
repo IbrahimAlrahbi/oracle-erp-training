@@ -5,7 +5,7 @@
 
 2. In the heading, set:
    Operating unit: Vision Operations
-   Type: PO
+   Type: PR
    Preparer: Stock, Ms. Pat (Manager)
 
 3. In lines, click:
@@ -27,7 +27,9 @@
    Site: CORP HQ
 
 7. Click:
-   <Save>
+   Approve -> <Save>
+
+After the approve window shows up, press print then OK
 
 8. Note:
    A number will be generated and will be used in the next step.
@@ -47,24 +49,17 @@
 13. Query:
     select * from po_req_distributions_all where requisition_line_id = 'requisition_line_id';
 
+
+==================
+If you forget your Requisition Number you can get it from the following by query the item.
+
 14. Open:
-    Purchasing
-       -> Requisitions
-          -> Requisition
-
-15. Click:
-    Distribution
-
-16. Click:
-    Approve
-
-17. Open:
     Purchasing
        -> Requisitions
           -> Requisition summary
 
-18. Enter:
+15. Enter:
     Requisition Number: 16094
 
-19. Click:
+16. Click:
     <Find>

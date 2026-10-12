@@ -1,4 +1,4 @@
-1. Add responsibility
+1. Add responsibility: Workflow Administrator  Web Application
 2. Open Oracle Workflow Builder
 3. Click: File > Quick Start Wizard 
 4. Set:
@@ -24,7 +24,7 @@ Click: <Apply> > <Ok>
 Click: <Apply> > <Ok>
 
 7. Drag and drop notification 'IBRA_NOTIFY' between 'Start' and 'End'
-8. Configure start and end by hold right click on start drag until IBRA_NOTIFY then from IBRA_NOTIFY drag until End
+8. Configure start and end by hold right click on 'Start' drag until 'IBRA_NOTIFY' then from 'IBRA_NOTIFY' drag until 'End'
 9. Right click in 'IBRA_NOTIFY' > Node > under performer set Value to: 'IBRAHIM'
 10. Attache workflow to the database
-	Click the on IBRA_WF > File > Save As > click Database (APPS, apps, ebsdb)
+	Click the on IBRA_WF or 'New Item Type' > File > Save As > click Database (APPS, apps, ebsdb)

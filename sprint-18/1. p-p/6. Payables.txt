@@ -10,9 +10,10 @@
 3. Click <Tab> until the following yellow fields are displayed.
 
 4. Set:
-   Invoince num: IBRAHIMINV001
+   Invoince num: IBRAHIMINV001 (It should be unique)
    Invoice amount: 200
-   Payment method: CHECK
+   Payment method: Check
+   Payment method: Check-USD
 
 5. Open:
    Lines tab
@@ -23,6 +24,7 @@
    PO line: … (LOV) Display 1
    PO shipment: … (LOV) Display 1
 
+
 7. Click:
    Distributions
 
@@ -31,8 +33,8 @@
 
 9. Click:
    Actions1
-      -> Validate
-         -> <OK>
+      Select Validate
+         Click <OK>
 
 10. Open:
     <Holds> tab
@@ -48,15 +50,40 @@
 
 14. Open:
     Actions 1
-       -> Create accounting
+       Select Create accounting
           -> Final post
-             -> Force approval
 
-15. Click:
+Click:
     <OK>
 
-16. In SQL Developer, query:
+16. Open:
+    Actions 1
+       Select Pay in Full
+          -> Final post
+
+Click:
+    <OK>
+
+17. Open:
+    Actions 1
+       Create accounting
+          -> Final post
+
+Click:
+    <OK>
+
+
+18. In SQL Developer, query:
     Select * from ap_invoices_all WHERE INVOICE_NUM = ‘IBRAHIMINV001';
 
-17. Query:
+19. Query:
     Select * from ap_invoice_distributions_all where invoice_id = '';
+
+
+20. Open:
+    General Ledger, Vision Operations (USA)
+        -> Journals 
+            -> Enter
+21. Set:
+    Journal: %
+    Click: <Find>

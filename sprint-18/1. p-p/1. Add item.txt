@@ -8,15 +8,18 @@
    Item: XX_IBRAHIM_LAPTOP
    Desc: Laptop for Z – Training
 
+<Save>
+
 3. Open:
    Tools
       -> Copy from
 
-4. Click:
+4. Click lov
+Add Finish Good
    <Tab>
    <Apply>
    <Done>
-   All required checkboxes selected
+
 
 5. Open the Purchasing tab and set:
    List price: 100
@@ -33,24 +36,25 @@
       -> Miscellaneous transactions
 
 9. Set the following:
-   Type: m
-   <Tab>
-   Select Miscellaneous Receipt (Add)
-   <Transaction lines>
+	Date: Old Date
+	Type: m
+	<Tab>
+	Select Miscellaneous Receipt (Add)
+	<Transaction lines>
 
 10. Set the transaction details:
     Item: XX_IBRAHIM_LAPTOP
     Sub inventory: Stores
     UOM (Unit of measurement): Ea
     Quantity: 1000
-    Account: Payables
+    Account > lov > Enter in Account alias: emp > then click <Tab>
     AccNo is displayed
 
 11. Click:
     <Save>
 
 12. Open:
-    On hand availability
+    On hand availability	
        -> On-hand quantity
 
 13. Enter:

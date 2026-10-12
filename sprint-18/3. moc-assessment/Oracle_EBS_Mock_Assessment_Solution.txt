@@ -1,0 +1,552 @@
+ORACLE EBS - MOCK ASSESSMENT SOLUTION
+============================================================
+
+
+QUESTION 1 - P2P CYCLE: REQUISITION TO GL 
+============================================================
+
+
+A. PURCHASE REQUISITION 
+------------------------------------------------
+# I used the same item added before 'XX_IBRAHIM_LAPTOP', I only increased the amount of the item.
+
+1. Open:
+   Purchasing Vision Operations (USA)
+      -> Requisitions
+         -> Requisition
+
+2. Set:
+   Operating unit: Vision Operations
+   Type: PR
+   Preparer: Stock, Ms. Pat
+
+3. In lines, click:
+   Num
+
+4. Enter the confirmed laptop item:
+   Item: XX_IBRAHIM%
+   <Tab>
+
+5. Set:
+   Quantity: 2
+   <Tab>
+   Unit Price: 500
+   Currency: OMR
+
+6. Set:
+   Need by: 15-Nov-2026
+   Location: Auckland
+   Subinventory: Stores
+   Supplier: Abbott Laboratories
+   Site: CORP HQ
+
+7. Review the entered line:
+   Required item: Laptop Computer
+   Quantity: 2
+   Price: 500 OMR
+   Expected line amount: 1,000 OMR
+   Need by: 15-Nov-2026
+
+8. Click:
+   <Save>
+
+9. Record:
+   Requisition Number: 16120
+
+10. Open the saved requisition and click:
+   <Approve>
+   <Save>
+
+11. Open:
+   Purchasing
+      -> Requisitions
+         -> Requisition summary
+
+12. Enter:
+   Requisition Number: 16120
+   <Find>
+
+13. Verify and record the actual approval status.
+   Expected successful result: Approved.
+
+14. Verification in SQL Developer:
+
+   select * from po_requisition_headers_all where segment1 = '<ACTUAL_REQUISITION_NUMBER>';
+
+
+   select * from po_requisition_lines_all where requisition_header_id = '<ACTUAL_REQUISITION_HEADER_ID>';
+
+
+   select * from po_req_distributions_all where requisition_line_id = '<ACTUAL_REQUISITION_LINE_ID>';
+
+
+B. RFQ
+------------------------------------------------
+1. Open:
+   Purchasing
+	-> RFQ’s & Quotations
+		-> RFQ’s
+
+2. Set the following:
+   Operating unit: Vision Operation
+   Type: Standard RFQ
+   Close date: Tomorrow
+   Ship to: Auckland
+
+3. Query the item:
+   XX_IBRHIM%
+   Click <Tab>
+
+4. Click:
+   Price break
+
+5. Set:
+   Quantity: 2
+   Org: V1
+   Ship-to: Auckland
+<Save>
+
+
+6. Click:
+   Suppliers
+
+7. Set supplier:
+   Abbott Laboratories
+
+8. Click:
+   <Save>
+
+9. Note:
+   A number is generated.
+
+10. From the top menu, open:
+    Tools
+       -> Copy document
+
+11. Set:
+    Action: Entire RFQ
+    Type: Standard Quotation
+    Supplier: Abbott Laboratories
+    Site: CORP HQ
+
+12. Click:
+    <OK>
+
+13. Note the numbers:
+    412
+    596
+
+14. In SQL Developer, query the RFQ:
+    select * from po_headers_all where segment1 = '412' and type_lookup_code = 'RFQ';
+
+15. Query the quotation:
+    select * from po_headers_all where segment1 = '596' and type_lookup_code = 'QUOTATION';
+
+
+C. PURCHASE ORDER 
+------------------------------------------------
+1. Purchasing Vision Operations (USA)
+      -> Purchase order
+         -> Purchase order
+
+2. Select/review:
+   Operating unit: Vision Operations
+   Type: Standard Purchase Order
+   Supplier: Abbott Laboratories
+   Site: CORP HQ
+   Ship to: Auckland		
+
+3. Review the line (Num):
+   Item: XX_IBRHIM%
+   Quantity: 2
+   Unit Price: 500 OMR
+   Line Amount: 1,000 OMR
+   Need By: 15-Nov-2026
+
+4. Click:
+   <Shipments>
+
+5. Set/review:
+   Org: V1
+   Ship to: Auckland
+   Quantity: 2
+
+6. Click:
+   <Distributions>
+   <Save>
+
+7. Record:
+   PO Number: 6771
+   Requisition linkage evidence: <RECORD_FROM_LAB>
+
+8. Click:
+    <Approve>
+
+9. Open:
+    Purchase order
+       -> Purchase order summary
+
+10. Set:
+    Number: 6771
+    <Find>
+
+11. Verify:
+    Status: APPROVED
+    Supplier/site, item, quantity 2, price 500 OMR and amount 1,000 OMR.
+
+12. Verification in SQL Developer:
+
+    select * from po_headers_all where segment1 = '<ACTUAL_PO_NUMBER>';
+
+    select * from po_lines_all where po_header_id = '<ACTUAL_PO_HEADER_ID>';
+
+    select * from PO.po_line_locations_all where po_line_id = '<ACTUAL_PO_LINE_ID>';
+
+
+D. RECEIPT
+------------------------------------------------
+1. Purchasing Vision Operations (USA)
+      -> Receiving
+         -> Receipts
+
+2. Enter:
+   Organization: V1 Vision Operations
+   Purchase order no: 6771
+   <Tab>
+
+3. Check the displayed supplier and PO item.
+
+4. Receive:
+   Quantity: 2
+
+5. Enter:
+   Comments: Receipt for PO <ACTUAL_PO_NUMBER> - 2 Laptop Computers
+ 
+6. Click:
+   <Save>
+   Header
+
+7. Record:
+   Receipt Number: 9148
+   Actual quantity received: 2
+
+8. Query in SQL Developer:
+
+   select * from rcv_shipment_headers order by 1 desc;
+
+   select * from rcv_shipment_headers where receipt_num = '<ACTUAL_RECEIPT_NUMBER>';
+
+
+E. PAYABLES INVOICE 
+------------------------------------------------
+1. Open:
+   Payables, Vision Operations (USA)
+      -> Invoices
+         -> Entry
+            -> Invoices
+
+2. Enter:
+   PO number: <ACTUAL_PO_NUMBER>
+   <Tab>
+
+3. Confirm/enter:
+   Supplier: Abbott Laboratories
+   Supplier Site: CORP HQ
+
+4. Enter:
+   Invoice Number: IBRAHIM_LAP_INV001
+   Invoice Amount: 1000
+   Currency: OMR
+   Invoice Date: Today
+   Payment method: Check
+   Payment method: Check-USD
+
+5. Open:
+   Lines tab
+
+6. Enter/review:
+   Amount: 1000
+   Ship to: Auckland
+   PO line: <LOV - select the actual laptop line>
+   PO shipment: <LOV - select the actual laptop shipment>
+
+7. Click:
+   <Distributions>
+   <Save>
+
+8. Click:
+   Actions1
+      -> Validate
+         -> <OK>
+
+9. Holds
+       -> <Release 1>
+          -> Default release name: <LOV>
+             -> <OK>
+
+10. Check:
+    General tab
+       Status: Validated
+
+12. Verification in SQL Developer:
+
+    select * from ap_invoices_all where invoice_num = '<ACTUAL_INVOICE_NUMBER>';
+
+    select * from ap_invoice_lines_all where invoice_id = '<ACTUAL_INVOICE_ID>';
+
+    select * from ap_invoice_distributions_all where invoice_id = '<ACTUAL_INVOICE_ID>';
+
+
+F. ACCOUNTING AND GL 
+------------------------------------------------
+1. On the validated invoice, open:
+   Actions 1
+      -> Create Accounting
+         -> Final Post
+            -> <OK>
+
+2. On the validated invoice, open:
+   Actions 1
+      -> Pay In Full
+            -> <OK>
+
+2. Verification in SQL Developer:
+
+   DESC GL_JE_HEADERS SELECT * FROM GL_JE_HEADERS ORDER BY 1 DESC;
+
+   Record the actual relevant invoice journal name.
+
+3. Open:
+   General Ledger, Vision Operations (USA)
+      -> Journals
+         -> Enter
+
+7. Set:
+   Journal: Oct-26 Purchase Invoices USD
+   <Find>
+
+8. Select the journal and click:
+   <Review Journal>
+
+9. Verify:
+   Relevant invoice journal: Oct-26 Purchase Invoices USD
+   Journal currency: <ACTUAL_CURRENCY>
+   Entered debit total: expected 1,000 OMR
+   Entered credit total: expected 1,000 OMR
+   Difference: 1,000 - 1,000 = 0 OMR
+
+10. Verification in SQL Developer:
+
+    select accounting_event_id from ap_invoice_distributions_all where invoice_id = '<ACTUAL_INVOICE_ID>';
+
+    select * from xla_events where event_id = '<ACTUAL_ACCOUNTING_EVENT_ID>';
+
+    select * from xla_ae_headers where event_id = '<ACTUAL_ACCOUNTING_EVENT_ID>';
+
+    select * from xla_ae_lines where ae_header_id = '<ACTUAL_AE_HEADER_ID>';
+
+    select * from xla_distribution_links where ae_header_id = '<ACTUAL_AE_HEADER_ID>' and ae_line_num in (1,2);
+
+
+
+QUESTION 2 - EMPLOYEE LEAVE APPROVAL WORKFLOW
+============================================================
+
+
+A. WORKFLOW DEFINITION & CONFIGURATIONS
+------------------------------------------------------------
+1. Add responsibility: Workflow Administrator Web Application
+2. Open Oracle Workflow Builder
+3. Click: File > Quick Start Wizard 
+4. Set:
+	Internal Name: IBRA_WF
+	Display Name: IBRA_WF
+Click <Ok>
+
+5. Adding Notification
+	- Right click on 'Message' > New Message
+	- Set:
+		Internal Name: IBRA_MSG
+		Display Name: IBRA_MSG
+		Add Body: 'Please review the employee leave request and approve or reject it'
+Click: <Apply> > <Ok>
+
+6. Attache message to notification
+
+	- Right click on Notification > New Notification
+	- Set:
+		Internal Name: IBRA_NOTIFY
+		Display Name: IBRA_NOTIFY
+		Message: IBRA_MSG
+Click: <Apply> > <Ok>
+
+7. Drag and drop notification 'IBRA_NOTIFY' between 'Start' and 'End'
+8. Configure start and end by hold right click on 'Start' drag until 'IBRA_NOTIFY' then from 'IBRA_NOTIFY' drag until 'End'
+9. Right click in 'IBRA_NOTIFY' > Node > under performer set Value to: 'IBRAHIM'
+10. Attache workflow to the database
+	Click the on IBRA_WF or 'New Item Type' > File > Save As > click Database (APPS, apps, ebsdb)
+
+
+
+B. DEPLOY / LOAD WORKFLOW
+------------------------------------------------------------
+1. Login as SYSADMIN/Welcome1 in EBS
+2. Workflow Administrator Web Application
+	-> Administrator Workflow
+		-> Developer Studio
+3. ENTER: IBR%
+4. Click <Go>
+5. Click <Run>
+6. Set:
+	- Item Key: 1
+	- User Key: 1
+
+7. Click in the right top <Submit>
+8. From the top menu click <Status Monitor>
+9. Enter Workflow Type 'IBRA_WF'
+10. Login back with my user 
+11. Workflow Administrator Web Application
+	-> Administrator Workflow
+		-> Developer Studio
+12. From the menu > Click 'Notification'
+13. See the details
+
+C. DOCUMENTATION
+------------------------------------------------------------
+1. Submit the proposed workflow diagram described in A10.
+   A rendered diagram is also included in the accompanying chat answer.
+
+
+
+QUESTION 3 - MD50 FUNCTIONAL DESIGN
+============================================================
+
+
+1. BUSINESS REQUIREMENT
+
+   An employee submits a leave request, the request is sent
+   to the employee's manager, and the manager approves or rejects it.
+
+
+
+2. CURRENT PROCESS / AS-IS
+
+3. PROPOSED PROCESS / TO-BE
+
+   1. Employee submits a leave request.
+   2. The request is routed to the confirmed manager.
+   3. The manager receives and reviews the notification.
+   4. The manager selects Approve or Reject.
+   5. The request records the corresponding outcome.
+
+4. FUNCTIONAL REQUIREMENTS
+
+   - Allow an employee to submit a leave request.
+   - Route the request to a manager.
+   - Generate a notification for the approver.
+   - Allow the approver to choose Approve or Reject.
+   - Follow the corresponding workflow branch and finish correctly.
+
+
+5. BUSINESS RULES
+
+   - The decision path is Employee -> Manager -> Approved/Rejected.
+   - Approve produces Approved; Reject produces Rejected.
+
+6. WORKFLOW / INTEGRATION REQUIREMENTS
+
+   Use an Oracle Workflow Item Type, Process, activities, notification,
+
+7. ASSUMPTIONS AND DEPENDENCIES
+
+   - Valid employee and manager EBS users are available.
+   - The correct manager is confirmed before execution.
+   - Workflow Builder, database connectivity and the demonstrated
+        Workflow Administrator responsibility are available.
+
+
+
+
+QUESTION 4 - MD70 TECHNICAL DESIGN 
+============================================================
+
+
+1. TECHNICAL SOLUTION
+
+   Proposed object names:
+   Item Type: IBRLWF
+   Display Name: IBRAHIM Leave Approval
+   Process: IBRA_LEAVE_PROCESS
+   Message: IBRA_LEAVE_MSG
+   Notification: IBRA_LEAVE_NOTIFY
+
+
+2. TECHNICAL ARCHITECTURE / FLOW 
+
+   Logical design:
+   Employee submission -> request data -> workflow instance
+      -> manager notification -> manager response
+         -> Approved outcome OR Rejected outcome -> End
+
+   Proposed data flow:
+   1. Submission supplies request identity, employee, manager and dates.
+   2. The request identity is associated with its workflow instance.
+   3. Manager response is associated with that same request.
+   4. The final decision is retained and visible for verification.
+
+   S9/S10 cover the basic workflow and manual test launch only.
+   The actual submission-to-workflow interface is not specified.
+
+3. DATABASE OBJECTS 
+
+   Proposed fields and purpose:
+   REQUEST_ID       Unique request identifier
+   EMPLOYEE_USER    Submitting employee account
+   MANAGER_USER     Assigned manager account
+   START_DATE       Leave start date
+   END_DATE         Leave end date
+   LEAVE_REASON     Request explanation
+   STATUS           Submitted / Approved / Rejected (proposed values)
+   WORKFLOW_ITEM_KEY Reference to the workflow instance
+   DECISION_DATE    Time the final decision is recorded
+
+
+4. PL/SQL / API / WORKFLOW COMPONENTS 
+
+   Workflow components:
+   IBRLWF, IBRA_LEAVE_PROCESS, IBRA_LEAVE_MSG, IBRA_LEAVE_NOTIFY.
+   Required logical activities:
+   Start, Submit Leave, Manager Approval, Approved, Rejected, End.
+
+
+5. PROGRAM / FORM / CONCURRENT PROGRAM DETAILS
+
+   Supplied lab entry point:
+   Workflow Administrator Web Application
+      -> Administrator Workflow
+         -> Developer Studio
+            -> <Run>
+
+
+6. ERROR HANDLING & LOGGING 
+
+   - Missing required request data:
+     Identify the missing value; do not submit an incomplete request.
+   - End date before start date:
+     Reject the input and request corrected dates.
+   - Manager unavailable/unresolved:
+     Record the routing problem; do not mark the request approved.
+   - Notification/processing failure:
+     Retain request and workflow identifiers for investigation.
+   - Invalid or duplicate final decision:
+     Preserve one final outcome and record the rejected operation.
+
+7. TESTING CONSIDERATIONS
+
+   - Submit a request -> workflow instance starts.
+   - Notification is generated and reaches the assigned manager.
+   - Approve -> Approved path -> correct end activity.
+   - Reject on a separate request -> Rejected path -> correct end.
+
+
+

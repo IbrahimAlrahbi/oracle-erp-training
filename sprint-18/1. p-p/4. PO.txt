@@ -13,7 +13,13 @@
    XX_IBRHIM%
    Click <Tab>
 
-4. Click:
+   Promise Date: Tomorrow
+   Need By: Tomorrow
+
+4. Click: 
+	PO
+
+5. Click:
    Num
 
 5. Set:
