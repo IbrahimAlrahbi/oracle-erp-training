@@ -1,0 +1,22 @@
+
+Creating User
+--------------------
+1. Login with admin: A.A
+2. Open Tools 
+	-> Security Console
+		-> Users 
+			-> ADD USER ACCOUNT
+3. Set the following:
+	- First Name: I
+	- Last Name: ALRAHBI
+	- Username: I.ALRAHBI
+	- Password:
+<Save and Close>
+
+Adding Roles
+---------------------
+1. Login with admin: A.A
+2. Assign roles to user I.ALRAHBI
+	- Employee 
+	- IT Security Manager
+<Save and Close>
